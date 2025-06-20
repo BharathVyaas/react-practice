@@ -2,6 +2,12 @@
   "name": "react-pratice",
   "version": "0.1.0",
   "private": true,
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -11,7 +17,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "disable-react-devtools": "^1.0.0",
     "dompurify": "^3.2.6",
     "framer-motion": "^12.18.1",
     "jwt-decode": "^4.0.0",
@@ -31,7 +36,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx",
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -53,7 +61,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "eslint": "^9.29.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "postcss": "^8.5.6",
+    "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17"
   }
 }

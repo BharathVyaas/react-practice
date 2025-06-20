@@ -15,9 +15,14 @@ import { setupAxiosInterceptors } from "./middleware/axiosInterceptor";
 setupAxiosInterceptors();
 
 if (process.env.NODE_ENV === "production") {
-  import("disable-react-devtools").then((module) => {
-    module.default();
-  });
+  if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === "object") {
+    for (let [key, value] of Object.entries(
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__
+    )) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__[key] =
+        typeof value === "function" ? () => {} : null;
+    }
+  }
 }
 
 if (process.env.NODE_ENV === "production") {

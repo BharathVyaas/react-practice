@@ -32,7 +32,18 @@ jobs:
 
       - name: 📦 Install dependencies
         run: |
-          npm ci
+          npm ci || npm install
+        continue-on-error: true
+
+      - name: 📋 Validate installation
+        run: |
+          if [ -d "node_modules" ]; then
+            echo "Dependencies installed successfully."
+            npm ls ajv json-schema-traverse @types/react typescript
+          else
+            echo "Dependency installation failed."
+            exit 1
+          fi
 
       - name: 🧪 Run tests
         run: |

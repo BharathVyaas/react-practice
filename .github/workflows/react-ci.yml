@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: 🧾 Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v3
@@ -21,6 +23,12 @@ jobs:
 
       - name: 📋 Check Node.js version
         run: node -v
+
+      - name: 🧹 Clear npm cache
+        run: npm cache clean --force
+
+      - name: 🗑️ Remove existing node_modules
+        run: rm -rf node_modules
 
       - name: 📦 Install dependencies
         run: |

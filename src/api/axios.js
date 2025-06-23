@@ -11,4 +11,16 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Global error handler
+api.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    if (process.env.NODE_ENV !== "production") {
+      console.error("API Error:", error); // Only log in dev
+    }
+    // Optionally show toast, return fallback, etc.
+    return Promise.reject(error);
+  }
+);
+
 export default api;

@@ -74,6 +74,7 @@ const LoginPage = () => {
               label="Email"
               name="email"
               type="email"
+              autoComplete
               fullWidth
               margin="normal"
               value={form.email}
@@ -84,6 +85,7 @@ const LoginPage = () => {
               name="password"
               type="password"
               fullWidth
+              autoComplete
               margin="normal"
               value={form.password}
               onChange={handleChange}

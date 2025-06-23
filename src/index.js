@@ -26,6 +26,13 @@ if (process.env.NODE_ENV === "production") {
 }
 
 if (process.env.NODE_ENV === "production") {
+  // Disable all console.* logs in production
+  console.log = () => {};
+  console.warn = () => {};
+  console.error = () => {};
+}
+
+if (process.env.NODE_ENV === "production") {
   console.log = () => {};
   console.warn = () => {};
   console.error = () => {};

@@ -55,3 +55,11 @@ jobs:
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2.3.6
+
+      - name: 🧪 Run tests with coverage
+        run: npm test -- --coverage --watchAll=false
+
+      - name: 📤 Upload coverage to Coveralls
+        run: cat ./coverage/lcov.info | npx coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
